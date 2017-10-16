@@ -6,7 +6,6 @@ module StylesheetFlipper
       ActionView::Base.send :include, StylesheetFlipper::ViewHelpers
     end
     initializer "stylesheet_flipper.initialize_rails", :group => :all do |app|
-      # binding.pry
       app.config.assets.register_bundle_processor 'text/css', :stylesheet_flipper do |context, data|
         if context.logical_path.include?('-flipped')
           R2.r2 data
